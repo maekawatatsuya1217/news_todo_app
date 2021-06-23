@@ -1,24 +1,36 @@
-# README
+# テーブル設計
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
+##user
 
-Things you may want to cover:
+| Column     | Type   | Options  |
+| ---------- | ------ | -------- |
+| email      | string | NOT NULL |
+| password   | string | NOT NULL |
+| name       | string | NOT NULL |
+| profile    | text   | NOT NULL |
 
-* Ruby version
+- has_many :calendars
 
-* System dependencies
 
-* Configuration
+##calendars
 
-* Database creation
+| Column  | Type       | Options                       |
+| ------- | ---------- | ----------------------------- |
+| content | string     |                               |
+| date    | datetime   | null: false                   |
+| user    | references | null: false, foreign_key: tru |
 
-* Database initialization
 
-* How to run the test suite
+- belongs_to :user
 
-* Services (job queues, cache servers, search engines, etc.)
+##blog
 
-* Deployment instructions
+| Column  | Type       | Options  |
+| ------- | ---------- | -------- |
+| title   | string     | NOT NULL |
+| catch   | string     | NOT NULL |
+| article | text       | NOT NULL |
+| user    | references |          |
 
-* ...
+belongs_to :user
+
